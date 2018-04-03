@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[Customers](
 	[Password] [nvarchar](50) NOT NULL,
 	[Fullname] [nvarchar](50) NOT NULL,
 	[Email] [nvarchar](50) NOT NULL,
-	[Photo] [nvarchar](150) NOT NULL
+	[Photo] [nvarchar](200) NOT NULL
  CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
