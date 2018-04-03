@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 1, 2017 7:58:03 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Orders" table="Orders" schema="dbo" catalog="UNICASE" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="customers" class="entity.Customers" fetch="select">
+            <column name="CustomerId" not-null="true" />
+        </many-to-one>
+        <property name="orderDate" type="timestamp">
+            <column name="OrderDate" length="23" not-null="true" />
+        </property>
+        <property name="requireDate" type="timestamp">
+            <column name="RequireDate" length="23" not-null="true" />
+        </property>
+        <property name="receiver" type="string">
+            <column name="Receiver" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" />
+        </property>
+        <property name="amount" type="double">
+            <column name="Amount" precision="53" scale="0" not-null="true" />
+        </property>
+        <set name="orderDetailses" table="OrderDetails" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrderId" not-null="true" />
+            </key>
+            <one-to-many class="entity.OrderDetails" />
+        </set>
+    </class>
+</hibernate-mapping>
